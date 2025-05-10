@@ -30,6 +30,24 @@ function App() {
       }
     })
   });
+
+  useGSAP(() => {
+    const main = document.querySelector('.main');
+
+    main?.addEventListener("mousemove", function(e) {
+      const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
+      gsap.to('.main .text', {
+        x: `${xMove * 0.4}%`,
+      });
+      gsap.to('.sky', {
+        x: xMove,
+      });
+      gsap.to('.bg', {
+        x: xMove * 1.7,
+      });
+    });
+  }, [showContent]);
+
   return (
     <>
     <div className="svg flex items-center justify-center fixed top-0 left-0 z-[100] w-full h-screen overflow-hidden bg-[#000]">
@@ -75,15 +93,31 @@ function App() {
               </div>
             </div>
             <div className="imagesdiv relative overflow-hidden w-full h-screen">
-              <img className="absolute top-0 left-0 w-full h-full object-cover" src="./sky.png" alt="" />
-              <img className="absolute top-0 left-0 w-full h-full object-cover" src="./bg.png" alt="" />
-              <img className="absolute -bottom-[60%] left-1/2 -translate-x-1/2 scale-[0.8]" src="./girlbg.png" alt="" />
+              <img className="sky absolute scale-[1.2] top-0 left-0 w-full h-full object-cover" src="./sky.png" alt="" />
+              <img className="bg absolute scale-[1.1] top-0 left-0 w-full h-full object-cover" src="./bg.png" alt="" />
+              <div className='text text-white flex flex-col gap-2 absolute top-10 left-1/2 -translate-x-1/2'>
+              <h1 className='text-[6rem] leading-none -ml-30'>grand</h1>
+              <h1 className='text-[6rem] leading-none ml-10'>theft</h1>
+              <h1 className='text-[6rem] leading-none -ml-30'>auto</h1>
             </div>
-            <div className='btmbar text-white absolute bottom-0 left-0 w-full py-10 px-10 bg-gradient-to-t from-black to-transperent'>
-              <div className='flex gap-4'>
+              <img className="character absolute -bottom-[60%] left-1/2 -translate-x-1/2 scale-[0.8]" src="./girlbg.png" alt="" />
+            </div>
+            <div className='btmbar text-white absolute bottom-0 left-0 w-full py-15 px-10 bg-gradient-to-t from-black to-transperent'>
+              <div className='flex gap-4 items-center'>
                  <i className="text-4xl ri-arrow-down-line"></i>
                 <h3 className='text-xl font-[Helvetica]'>Scroll Down</h3>
               </div>
+              <div>
+                <img className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[65px]" src="./ps5.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <div className='w-full h-screen bg-black px-10 flex items-center justify-center'>
+            <div className='cntnr w-full h-[80%] bg-red-500'>
+              <div className='limg w-1/2 relative h-full'>
+              <img className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" src="./imag.png" alt="" />
+            </div>
+            <div className='rg'></div>
             </div>
           </div>
         </div>
