@@ -32,6 +32,46 @@ function App() {
   });
 
   useGSAP(() => {
+    if (!showContent) return;
+
+    gsap.to('.main',{
+      scale: 1,
+      rotate: 0,
+      duration: 2,
+      delay: -1,
+      ease: 'Expo.easeInOut',
+    });
+    gsap.to('.sky',{
+      scale: 1.1,
+      rotate: 0,
+      duration: 2,
+      delay: -.8,
+      ease: 'Expo.easeInOut',
+    });
+    gsap.to('.bg',{
+      scale: 1.1,
+      rotate: 0,
+      duration: 2,
+      delay: -.8,
+      ease: 'Expo.easeInOut',
+    });
+    gsap.to('.character',{
+      scale: 0.8,
+      x: '-50%',
+      bottom: '-60%',
+      rotate: 0,
+      duration: 2,
+      delay: -.8,
+      ease: 'Expo.easeInOut',
+    });
+    gsap.to('.text',{
+      scale: 1,
+      rotate: 0,
+      duration: 2,
+      delay: -.8,
+      ease: 'Expo.easeInOut',
+    });
+
     const main = document.querySelector('.main');
 
     main?.addEventListener("mousemove", function(e) {
@@ -80,8 +120,8 @@ function App() {
         </svg>
       </div>
       {showContent && (
-        <div className='main w-full'>
-          <div className="landing w-full h-screen bg-black">
+        <div className='main w-full rotate-[-10deg] scale-[1.7]'>
+          <div className="landing w-full h-screen bg-black overflow-hidden relative">
             <div className='navbar absolute top-0 left-0 z-[10] w-full py-10 px-10'>
               <div className='logo flex gap-7'>
                 <div className='lines flex flex-col gap-[5px]'>
@@ -93,14 +133,14 @@ function App() {
               </div>
             </div>
             <div className="imagesdiv relative overflow-hidden w-full h-screen">
-              <img className="sky absolute scale-[1.2] top-0 left-0 w-full h-full object-cover" src="./sky.png" alt="" />
-              <img className="bg absolute scale-[1.1] top-0 left-0 w-full h-full object-cover" src="./bg.png" alt="" />
-              <div className='text text-white flex flex-col gap-2 absolute top-10 left-1/2 -translate-x-1/2'>
+              <img className="sky absolute scale-[1.5] rotate-[-20deg] top-0 left-0 w-full h-full object-cover" src="./sky.png" alt="" />
+              <img className="bg absolute scale-[1.8] rotate-[-3deg] top-0 left-0 w-full h-full object-cover" src="./bg.png" alt="" />
+              <div className='text text-white flex flex-col gap-2 absolute top-10 left-1/2 -translate-x-1/2 scale-[1.4] rotate-[-10deg]'>
               <h1 className='text-[6rem] leading-none -ml-30'>grand</h1>
               <h1 className='text-[6rem] leading-none ml-10'>theft</h1>
               <h1 className='text-[6rem] leading-none -ml-30'>auto</h1>
             </div>
-              <img className="character absolute -bottom-[60%] left-1/2 -translate-x-1/2 scale-[0.8]" src="./girlbg.png" alt="" />
+              <img className="character absolute -bottom-[150%] left-1/2 -translate-x-1/2 scale-[2] rotate-[-15deg]" src="./girlbg.png" alt="" />
             </div>
             <div className='btmbar text-white absolute bottom-0 left-0 w-full py-15 px-10 bg-gradient-to-t from-black to-transperent'>
               <div className='flex gap-4 items-center'>
@@ -113,11 +153,21 @@ function App() {
             </div>
           </div>
           <div className='w-full h-screen bg-black px-10 flex items-center justify-center'>
-            <div className='cntnr w-full h-[80%] bg-red-500'>
+            <div className='cntnr flex text-white overflow-hidden w-full h-[80%]'>
               <div className='limg w-1/2 relative h-full'>
               <img className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" src="./imag.png" alt="" />
             </div>
-            <div className='rg'></div>
+            <div className='rg w-[30%] py-10'>
+              <h1 className='text-5xl'>Still running,</h1>
+              <h1 className='text-5xl'>Not Hunting</h1>
+              <p className='mt-10 text-xl font-[Helvetica_Now_Display]'>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              </p>
+              <p className='mt-10 text-xl font-[Helvetica_Now_Display]'>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+              </p>
+              <button className='bg-yellow-500 px-10 py-5 text-2xl text-black mt-10'>Download Now</button>
+            </div>
             </div>
           </div>
         </div>
